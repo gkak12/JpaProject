@@ -19,6 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	@Override
 	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) {
+//		employeeRepository.selectTest();
 		return employeeRepository.selectList(employeeSearchParam);
 	}
 }

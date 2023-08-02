@@ -10,9 +10,9 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="team")
-public class Team {
-	
+@Table(name="grade")
+public class Grade {
+
 	@Id @GeneratedValue
 	@Column(name="id")
 	private String id;

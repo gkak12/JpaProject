@@ -13,23 +13,27 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="EMPLOYEE")
+@Table(name="employee")
 public class Employee {
 
 	@Id @GeneratedValue
-	@Column(name="ID")
+	@Column(name="id")
 	private String id;
 	
-	@Column(name="NAME")
+	@Column(name="name")
 	private String name;
 	
-	@Column(name="EMAIL")
+	@Column(name="email")
 	private String email;
 	
-	@Column(name="CONTRACT")
+	@Column(name="contract")
 	private String contract;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="TEAM_ID")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="team_id")
 	private Team team;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="grade_id")
+	private Grade grade;
 }
