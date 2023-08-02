@@ -1,3 +1,5 @@
+### local ###
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/test
@@ -9,3 +11,11 @@ spring:
       maximum-pool-size: 4
   jpa:
     database: postgresql
+    properties:      hibernate:
+        show_sql: true  
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      
+logging:  file:
+    path: D:\\workspace\\JpaProject\\logs    name: jpa
