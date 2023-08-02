@@ -24,7 +24,7 @@ public class EmployeeRepositoryImpl extends QuerydslRepositorySupport implements
 		QEmployee employee = QEmployee.employee;
 		QTeam team = QTeam.team;
 
-		JPQLQuery query = from(employee);
+		JPQLQuery<Employee> query = from(employee);
 		query
 			.leftJoin(employee.team, team)
 			.where(employee.name.contains(employeeSearchParam.getName()));
