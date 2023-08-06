@@ -23,7 +23,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 
 		List<Employee> list = queryFactory
 								.selectFrom(employee)
-								.where(employee.name.contains(employeeSearchParam.getName()))
+								.where(employee.id.contains(employeeSearchParam.getId()))
 								.fetch();
 
 		return list;
