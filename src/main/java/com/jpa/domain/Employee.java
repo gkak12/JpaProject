@@ -3,6 +3,7 @@ package com.jpa.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,10 +31,10 @@ public class Employee {
 	private String contract;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="team_id")
+	@JoinColumn(name="team_id", foreignKey=@ForeignKey(name="employee_team_fk"))
 	private Team team;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="grade_id")
+	@JoinColumn(name="grade_id", foreignKey=@ForeignKey(name="employee_grade_fk"))
 	private Grade grade;
 }
