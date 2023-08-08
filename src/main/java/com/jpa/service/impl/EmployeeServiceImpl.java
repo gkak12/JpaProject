@@ -10,6 +10,7 @@ import com.jpa.domain.Employee;
 import com.jpa.domain.EmployeeSearchParam;
 import com.jpa.repository.EmployeeRepository;
 import com.jpa.service.EmployeeService;
+import com.querydsl.core.Tuple;
 
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService{
@@ -19,7 +20,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	@Override
 	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) {
-//		employeeRepository.selectTest();
 		return employeeRepository.selectList(employeeSearchParam);
+	}
+
+	@Override
+	public List<Tuple> selectCountByTeam() {
+		return employeeRepository.selectCountByTeam();
 	}
 }

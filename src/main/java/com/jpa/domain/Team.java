@@ -1,10 +1,16 @@
 package com.jpa.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -13,10 +19,15 @@ import lombok.Data;
 @Table(name="team")
 public class Team {
 	
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private String id;
+	private int id;
 	
 	@Column(name="name")
 	private String name;
+	
+	@OneToMany(mappedBy="team")
+	@JsonManagedReference
+	private List<Employee> employeeList;
 }

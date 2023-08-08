@@ -9,7 +9,10 @@ import com.jpa.domain.EmployeeSearchParam;
 import com.jpa.domain.QEmployee;
 import com.jpa.domain.QGrade;
 import com.jpa.domain.QTeam;
+import com.jpa.domain.Team;
 import com.jpa.repository.EmployeeRepository;
+import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -26,12 +29,27 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 		QGrade grade = QGrade.grade;
 
 		List<Employee> list = queryFactory
-								.selectFrom(employee)
+								.selectDistinct(employee)
+								.from(employee)
 								.join(employee.team, team)
 								.join(employee.grade, grade)
-								.where(employee.id.contains(employeeSearchParam.getId()))
+								.where(employee.id.eq(employeeSearchParam.getId()))
 								.fetch();
 
+		return list;
+	}
+
+	@Override
+	public List<Tuple> selectCountByTeam() {
+		QEmployee employee = QEmployee.employee;
+		QTeam team = QTeam.team;
+		
+		List<Tuple> list = queryFactory
+								.select(team.name, team.employeeList.size())
+								.from(team)
+								.join(team.employeeList, employee)
+								.groupBy(team.id)
+								.fetch();
 		return list;
 	}
 }
