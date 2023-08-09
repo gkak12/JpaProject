@@ -1,18 +1,18 @@
 package com.jpa.repository.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
 import com.jpa.domain.Employee;
-import com.jpa.domain.EmployeeSearchParam;
 import com.jpa.domain.QEmployee;
 import com.jpa.domain.QGrade;
 import com.jpa.domain.QTeam;
-import com.jpa.domain.Team;
+import com.jpa.dto.TeamDto;
+import com.jpa.param.EmployeeSearchParam;
 import com.jpa.repository.EmployeeRepository;
 import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -40,16 +40,23 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 	}
 
 	@Override
-	public List<Tuple> selectCountByTeam() {
+	public List<TeamDto> selectCountByTeam() {
 		QEmployee employee = QEmployee.employee;
 		QTeam team = QTeam.team;
 		
-		List<Tuple> list = queryFactory
+		List<TeamDto> list = queryFactory
 								.select(team.name, team.employeeList.size())
 								.from(team)
 								.join(team.employeeList, employee)
 								.groupBy(team.id)
-								.fetch();
+								.fetch()
+								.stream()
+								.map(tuple -> TeamDto.builder()
+												.name(tuple.get(team.name))
+												.count(tuple.get(team.employeeList.size()))
+												.build())
+								.collect(Collectors.toList())
+								;
 		return list;
 	}
 }

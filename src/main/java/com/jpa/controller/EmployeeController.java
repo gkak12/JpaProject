@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpa.domain.EmployeeSearchParam;
+import com.jpa.param.EmployeeSearchParam;
 import com.jpa.service.EmployeeService;
 
 @RestController
