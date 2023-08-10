@@ -1,5 +1,7 @@
 package com.jpa.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -34,13 +38,19 @@ public class Employee {
 	@Column(name="contract")
 	private String contract;
 	
-	@ManyToOne(fetch=FetchType.LAZY) @JsonBackReference
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonBackReference
 	@JoinColumn(name="team_id", foreignKey=@ForeignKey(name="employee_team_fk"))
 	private Team team;
 	
-	@ManyToOne(fetch=FetchType.LAZY) @JsonBackReference
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonBackReference
 	@JoinColumn(name="grade_id", foreignKey=@ForeignKey(name="employee_grade_fk"))
 	private Grade grade;
+	
+	@OneToMany(mappedBy="employee")
+	@JsonManagedReference
+	private List<Attendance> attendanceList;
 	
 	public void setTeam(Team team) {
 		if(this.team != null) {

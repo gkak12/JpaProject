@@ -12,7 +12,6 @@ import com.jpa.domain.QTeam;
 import com.jpa.dto.TeamDto;
 import com.jpa.param.EmployeeSearchParam;
 import com.jpa.repository.EmployeeRepository;
-import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;

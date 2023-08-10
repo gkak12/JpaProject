@@ -11,7 +11,6 @@ import com.jpa.dto.TeamDto;
 import com.jpa.param.EmployeeSearchParam;
 import com.jpa.repository.EmployeeRepository;
 import com.jpa.service.EmployeeService;
-import com.querydsl.core.Tuple;
 
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService{
