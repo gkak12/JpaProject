@@ -20,7 +20,7 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@GetMapping(value="/selectList.json")
-	public Map<String, Object> list(EmployeeSearchParam employeeSearchParam){
+	public Map<String, Object> selectList(EmployeeSearchParam employeeSearchParam){
 		Map<String, Object> res = new HashMap<String, Object>();
 		res.put("LIST", employeeService.selectList(employeeSearchParam));
 		return res;
