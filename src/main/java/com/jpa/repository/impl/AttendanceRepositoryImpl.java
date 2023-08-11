@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Repository("attendanceRepository")
 @RequiredArgsConstructor
 public class AttendanceRepositoryImpl implements AttendanceRepository{
+	
 	private final JPAQueryFactory queryFactory;
 
 	@Override
