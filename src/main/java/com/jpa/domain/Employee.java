@@ -52,6 +52,10 @@ public class Employee {
 	@JsonManagedReference
 	private List<Attendance> attendanceList;
 	
+	@OneToMany(mappedBy="employee")
+	@JsonManagedReference
+	private List<Pay> payList;
+	
 	public void setTeam(Team team) {
 		if(this.team != null) {
 			this.team.getEmployeeList().remove(this);
