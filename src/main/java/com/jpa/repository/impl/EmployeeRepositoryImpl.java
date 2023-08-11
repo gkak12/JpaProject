@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @Repository("employeeRepository")
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository{
+	
 	private final JPAQueryFactory queryFactory;
 	
 	@Override
