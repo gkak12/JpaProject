@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.jpa.domain.Pay;
+import com.jpa.dto.PayDto;
 import com.jpa.repository.PayRepository;
 import com.jpa.service.PayService;
 
@@ -19,5 +20,10 @@ public class PayServiceImpl implements PayService{
 	@Override
 	public List<Pay> selectList() {
 		return payRepository.selectList();
+	}
+
+	@Override
+	public void insert(PayDto payDto) {
+		payRepository.insert(payDto);
 	}
 }
