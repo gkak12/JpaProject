@@ -17,7 +17,7 @@ class JasyptConfigTest {
 	}
 
 	public String jasyptEncoding(String value) {
-		String key = "test_key";
+		String key = System.getenv("JASYPT_KEY");
 		StandardPBEStringEncryptor pbeEnc = new StandardPBEStringEncryptor();
 		pbeEnc.setAlgorithm("PBEWithMD5AndDES");
 		pbeEnc.setPassword(key);
