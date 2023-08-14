@@ -52,7 +52,8 @@ public class TransactionConfig {
 		txAttributes.setProperty("select*", readOnlyTransactionAttributesDefinition);
 		
 		// write rollback-rule
-		txAttributes.setProperty("save*", writeTransactionAttributesDefinition);
+		txAttributes.setProperty("insert*", writeTransactionAttributesDefinition);
+		txAttributes.setProperty("update*", writeTransactionAttributesDefinition);
 		txAttributes.setProperty("delete*", writeTransactionAttributesDefinition);
 		
 		txAdvice.setTransactionAttributes(txAttributes);
