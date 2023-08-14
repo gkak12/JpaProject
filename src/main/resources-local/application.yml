@@ -2,9 +2,9 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/test
-    username: user
-    password: user
+    url: ENC(Wy2PN4QUcGtMHo2ls8JHBluAxVmfUOx0rwHslZhJD2c1Ep4W/geC2T8jtKBP9ucy)
+    username: ENC(cmMyK9SPLuSvgXLPY3gvwA==)
+    password: ENC(mX4foxlsEND0fFodhoi3EQ==)
     hikari:
       connection-timeout: 3000
       minimum-idle: 1
@@ -19,3 +19,7 @@ spring:
       
 logging:  file:
     path: D:\\workspace\\JpaProject\\logs    name: jpa
+    
+jasypt:
+  encryptor:
+    bean: jasyptEncryptorDES
