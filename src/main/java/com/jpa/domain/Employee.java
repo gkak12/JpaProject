@@ -74,3 +74,16 @@ public class Employee {
 		grade.getEmployeeList().add(this);
 	}
 }
+
+//DDL
+//CREATE TABLE jpa.employee (
+//	id serial NOT NULL,
+//	"name" varchar NULL,
+//	email varchar NULL,
+//	contract varchar NULL,
+//	team_id int4 NULL,
+//	grade_id int4 NULL,
+//	CONSTRAINT employee_pkey PRIMARY KEY (id),
+//	CONSTRAINT employee_grade_fk FOREIGN KEY (grade_id) REFERENCES grade(id),
+//	CONSTRAINT employee_team_fk FOREIGN KEY (team_id) REFERENCES team(id)
+//);

@@ -22,3 +22,10 @@ public class PayStatus {
 	@Column(name="name")
 	private String name;
 }
+
+//DDL
+//CREATE TABLE jpa.pay_status (
+//	id serial NOT NULL,
+//	"name" varchar NULL,
+//	CONSTRAINT pay_status_pkey PRIMARY KEY (id)
+//);

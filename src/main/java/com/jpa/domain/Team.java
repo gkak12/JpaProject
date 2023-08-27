@@ -31,3 +31,10 @@ public class Team {
 	@JsonManagedReference
 	private List<Employee> employeeList;
 }
+
+//DDL
+//CREATE TABLE jpa.team (
+//	id serial NOT NULL,
+//	"name" varchar NULL,
+//	CONSTRAINT team_pkey PRIMARY KEY (id)
+//);

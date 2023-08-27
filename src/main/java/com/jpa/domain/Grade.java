@@ -31,3 +31,10 @@ public class Grade {
 	@JsonManagedReference
 	private List<Employee> employeeList;
 }
+
+//DDL
+//CREATE TABLE jpa.grade (
+//		id serial NOT NULL,
+//		"name" varchar NULL,
+//	CONSTRAINT grade_pkey PRIMARY KEY (id)
+//);

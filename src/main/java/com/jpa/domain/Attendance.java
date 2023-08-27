@@ -59,3 +59,16 @@ public class Attendance {
 		employee.getAttendanceList().add(this);
 	}
 }
+
+//DDL
+//CREATE TABLE jpa.attendance (
+//	id serial NOT NULL,
+//	employee_id int4 NULL,
+//	start_time timestamp NULL,
+//	end_time timestamp NULL,
+//	work_time time NULL,
+//	status int4 NULL,
+//	CONSTRAINT attendance_pkey PRIMARY KEY (id),
+//	CONSTRAINT attendance_employee_fk FOREIGN KEY (employee_id) REFERENCES employee(id),
+//	CONSTRAINT attendance_status_fk FOREIGN KEY (status) REFERENCES attendance_status(id)
+//);

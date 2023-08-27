@@ -43,3 +43,14 @@ public class Pay {
 		employee.getPayList().add(this);
 	}
 }
+
+//DDL
+//CREATE TABLE jpa.pay (
+//	employee_id int4 NOT NULL,
+//	"date" timestamp NOT NULL,
+//	salary int4 NULL,
+//	status int4 NULL,
+//	CONSTRAINT pay_pk PRIMARY KEY (employee_id, date),
+//	CONSTRAINT pay_employee_fk FOREIGN KEY (employee_id) REFERENCES employee(id),
+//	CONSTRAINT pay_status_fk FOREIGN KEY (status) REFERENCES pay_status(id)
+//);
