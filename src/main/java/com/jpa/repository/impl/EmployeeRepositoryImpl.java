@@ -55,8 +55,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 												.name(tuple.get(team.name))
 												.count(tuple.get(team.employeeList.size()))
 												.build())
-								.collect(Collectors.toList())
-								;
+								.collect(Collectors.toList());
+		
 		return list;
 	}
 }
