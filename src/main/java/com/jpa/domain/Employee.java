@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -21,11 +22,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="employee")
+@Table(schema="jpa", name="employee")
+@SequenceGenerator(
+	name="EMPLOYEE_SEQ_GENERATOR",
+	sequenceName="EMPLOYEE_SEQ",
+	initialValue=1,
+	allocationSize=5
+)
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EMPLOYEE_SEQ_GENERATOR")
 	@Column(name="id")
 	private int id;
 	

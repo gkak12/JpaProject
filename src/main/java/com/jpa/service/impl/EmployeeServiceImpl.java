@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.jpa.domain.Employee;
+import com.jpa.dto.EmployeeDto;
 import com.jpa.dto.TeamDto;
 import com.jpa.param.EmployeeSearchParam;
 import com.jpa.repository.EmployeeRepository;
@@ -26,5 +27,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public List<TeamDto> selectCountByTeam() {
 		return employeeRepository.selectCountByTeam();
+	}
+
+	@Override
+	public void insertBatch(List<EmployeeDto> list) {
+		employeeRepository.insertBatch(list);
 	}
 }

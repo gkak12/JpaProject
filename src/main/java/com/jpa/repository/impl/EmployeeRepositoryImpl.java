@@ -3,15 +3,23 @@ package com.jpa.repository.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Repository;
 
 import com.jpa.domain.Employee;
+import com.jpa.domain.Grade;
 import com.jpa.domain.QEmployee;
 import com.jpa.domain.QGrade;
 import com.jpa.domain.QTeam;
+import com.jpa.domain.Team;
+import com.jpa.dto.EmployeeDto;
 import com.jpa.dto.TeamDto;
 import com.jpa.param.EmployeeSearchParam;
 import com.jpa.repository.EmployeeRepository;
+import com.jpa.repository.GradeRepository;
+import com.jpa.repository.TeamRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -21,6 +29,14 @@ import lombok.RequiredArgsConstructor;
 public class EmployeeRepositoryImpl implements EmployeeRepository{
 	
 	private final JPAQueryFactory queryFactory;
+	
+	private final EntityManager entityManager;
+	
+	@Resource(name="teamRepository")
+	private TeamRepository teamRepository;
+	
+	@Resource(name="gradeRepository")
+	private GradeRepository gradeRepository;
 	
 	@Override
 	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) {
@@ -58,5 +74,31 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 								.collect(Collectors.toList());
 		
 		return list;
+	}
+	
+	@Override
+	public void insertBatch(List<EmployeeDto> list) {
+		int cnt = 0;
+		
+		for(EmployeeDto item : list) {
+			Employee e = new Employee();
+			e.setName(item.getName());
+			e.setEmail(item.getEmail());
+			e.setContract(item.getContract());
+			
+			Team team = teamRepository.selectOneById(item.getTeamId());
+			e.setTeam(team);
+			
+			Grade grade = gradeRepository.selectOneById(item.getGradeId());
+			e.setGrade(grade);
+			
+			entityManager.persist(e);
+			cnt++;
+			
+			if(cnt % 5 == 0) {
+				entityManager.flush();
+				entityManager.clear();
+			}
+		}
 	}
 }
