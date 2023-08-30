@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="pay_status")
+@Table(schema="jpa", name="pay_status")
 public class PayStatus {
 	
 	@Id

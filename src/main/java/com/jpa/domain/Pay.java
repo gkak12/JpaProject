@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="pay")
+@Table(schema="jpa", name="pay")
 public class Pay {
 	
 	@EmbeddedId

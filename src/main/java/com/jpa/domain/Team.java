@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="team")
+@Table(schema="jpa", name="team")
 public class Team {
 	
 	@Id

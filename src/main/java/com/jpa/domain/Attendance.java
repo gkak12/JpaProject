@@ -21,7 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="attendance")
+@Table(schema="jpa", name="attendance")
 public class Attendance {
 
 	@Id

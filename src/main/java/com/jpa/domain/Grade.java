@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="grade")
+@Table(schema="jpa", name="grade")
 public class Grade {
 
 	@Id
