@@ -30,6 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
+	public List<Employee> selectListPaging(int pageNum, int pageRow) {
+		return employeeRepository.selectListPaging(pageNum, pageRow);
+	}
+
+	@Override
 	public void insertBatch(List<EmployeeDto> list) {
 		employeeRepository.insertBatch(list);
 	}

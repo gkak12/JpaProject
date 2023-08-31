@@ -13,5 +13,7 @@ public interface EmployeeRepository {
 	
 	public List<TeamDto> selectCountByTeam();
 	
+	public List<Employee> selectListPaging(int pageNum, int pageRow);
+	
 	public void insertBatch(List<EmployeeDto> list);
 }

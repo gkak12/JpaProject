@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.dto.EmployeeDto;
@@ -34,6 +35,13 @@ public class EmployeeController {
 	public Map<String, Object> selectCountByTeam(){
 		Map<String, Object> res = new HashMap<String, Object>();
 		res.put("LIST", employeeService.selectCountByTeam());
+		return res;
+	}
+	
+	@GetMapping(value="/selectListPaging.json")
+	public Map<String, Object> selectListPaging(@RequestParam(name="pageNum", required=true) int pageNum, @RequestParam(name="pageRow", required=true) int pageRow){
+		Map<String, Object> res = new HashMap<String, Object>();
+		res.put("LIST", employeeService.selectListPaging(pageNum, pageRow));
 		return res;
 	}
 	

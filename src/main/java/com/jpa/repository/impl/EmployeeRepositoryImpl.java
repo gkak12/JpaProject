@@ -77,6 +77,20 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 	}
 	
 	@Override
+	public List<Employee> selectListPaging(int pageNum, int pageRow) {
+		QEmployee employee = QEmployee.employee;
+		
+		List<Employee> list = queryFactory
+								.select(employee)
+								.from(employee)
+								.orderBy(employee.id.asc())
+								.offset(pageNum)
+								.limit(pageRow)
+								.fetch();
+		return list;
+	}
+
+	@Override
 	public void insertBatch(List<EmployeeDto> list) {
 		int cnt = 0;
 		
