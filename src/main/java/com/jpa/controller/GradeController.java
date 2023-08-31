@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jpa.common.Ajax;
 import com.jpa.dto.GradeDto;
 import com.jpa.service.GradeService;
 
@@ -25,16 +26,16 @@ public class GradeController {
 	private GradeService gradeService;
 	
 	@PostMapping(value="/insert.json")
-	public Map<String, String> insert(@RequestBody GradeDto gradeDto){
-		Map<String, String> res = new HashMap<String,String>();
+	public Map<Ajax, String> insert(@RequestBody GradeDto gradeDto){
+		Map<Ajax, String> res = new HashMap<Ajax,String>();
 		LOGGER.debug(gradeDto.toString());
 		
 		try {
 			gradeService.insert(gradeDto);
-			res.put("RESULT", "SUCCESS");
+			res.put(Ajax.MSG, Ajax.SUCCESS.upperCase());
 		} catch (Exception e) {
-			res.put("RESULT", "FAIL");
-			res.put("MSG", e.toString());
+			res.put(Ajax.MSG, Ajax.FAIL.upperCase());
+			LOGGER.debug(e.toString());
 		}
 		
 		return res;

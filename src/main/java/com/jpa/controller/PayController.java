@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jpa.common.Ajax;
 import com.jpa.dto.PayDto;
 import com.jpa.service.PayService;
 
@@ -26,15 +27,15 @@ public class PayController {
 	private PayService payService;
 
 	@GetMapping(value="/selectList.json")
-	public Map<String, Object> selectList(){
-		Map<String, Object> res = new HashMap<String, Object>();
+	public Map<Ajax, Object> selectList(){
+		Map<Ajax, Object> res = new HashMap<Ajax, Object>();
 		
 		try {
-			res.put("LIST", payService.selectList());
-			res.put("RESULT", "SUCCESS");
+			res.put(Ajax.LIST, payService.selectList());
+			res.put(Ajax.MSG, Ajax.SUCCESS);
 		} catch (Exception e) {
-			res.put("RESULT", "FAIL");
-			res.put("MSG", e.toString());
+			res.put(Ajax.MSG, Ajax.FAIL);
+			LOGGER.debug(e.toString());
 		}
 		
 		return res;
@@ -42,16 +43,16 @@ public class PayController {
 	
 
 	@PostMapping(value="/insert.json")
-	public Map<String, String> insert(@RequestBody PayDto payDto){
-		Map<String, String> res = new HashMap<String, String>();
+	public Map<Ajax, String> insert(@RequestBody PayDto payDto){
+		Map<Ajax, String> res = new HashMap<Ajax, String>();
 		LOGGER.debug(payDto.toString());
 
 		try {
 			payService.insert(payDto);
-			res.put("RESULT", "SUCCESS");
+			res.put(Ajax.MSG, Ajax.SUCCESS.upperCase());
 		} catch (Exception e) {
-			res.put("RESULT", "FAIL");
-			res.put("MSG", e.toString());
+			res.put(Ajax.MSG, Ajax.FAIL.upperCase());
+			LOGGER.debug(e.toString());
 		}
 		
 		return res;
