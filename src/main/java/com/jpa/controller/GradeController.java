@@ -26,12 +26,17 @@ public class GradeController {
 	
 	@PostMapping(value="/insert.json")
 	public Map<String, String> insert(@RequestBody GradeDto gradeDto){
+		Map<String, String> res = new HashMap<String,String>();
 		LOGGER.debug(gradeDto.toString());
 		
-		Map<String, String> res = new HashMap<String,String>();
-		gradeService.insert(gradeDto);
+		try {
+			gradeService.insert(gradeDto);
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
 		
-		res.put("MSG", "SUCCESS");
 		return res;
 	}
 }

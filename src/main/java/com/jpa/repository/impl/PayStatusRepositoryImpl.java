@@ -20,7 +20,7 @@ public class PayStatusRepositoryImpl implements PayStatusRepository{
 	private final EntityManager entityManager;
 
 	@Override
-	public PayStatus selectOne(int payStatusId) {
+	public PayStatus selectOne(int payStatusId) throws Exception {
 		QPayStatus payStatus = QPayStatus.payStatus;
 		
 		PayStatus one = queryFactory

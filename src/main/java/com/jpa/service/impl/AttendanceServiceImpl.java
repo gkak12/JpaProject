@@ -17,7 +17,7 @@ public class AttendanceServiceImpl implements AttendanceService{
 	private AttendanceRepository attendanceRepository;
 
 	@Override
-	public List<Attendance> selectList() {
+	public List<Attendance> selectList() throws Exception {
 		return attendanceRepository.selectList();
 	}
 }

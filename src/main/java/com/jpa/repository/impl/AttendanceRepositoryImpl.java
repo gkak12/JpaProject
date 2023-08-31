@@ -19,7 +19,7 @@ public class AttendanceRepositoryImpl implements AttendanceRepository{
 	private final JPAQueryFactory queryFactory;
 
 	@Override
-	public List<Attendance> selectList() {
+	public List<Attendance> selectList() throws Exception {
 		QAttendance attendance = QAttendance.attendance;
 		QEmployee employee = QEmployee.employee;
 		

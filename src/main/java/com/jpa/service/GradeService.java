@@ -4,5 +4,5 @@ import com.jpa.dto.GradeDto;
 
 public interface GradeService {
 
-	public void insert(GradeDto gradeDto);
+	public void insert(GradeDto gradeDto) throws Exception;
 }

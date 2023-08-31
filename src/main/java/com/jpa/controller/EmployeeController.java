@@ -27,29 +27,60 @@ public class EmployeeController {
 	@GetMapping(value="/selectList.json")
 	public Map<String, Object> selectList(EmployeeSearchParam employeeSearchParam){
 		Map<String, Object> res = new HashMap<String, Object>();
-		res.put("LIST", employeeService.selectList(employeeSearchParam));
+		
+		try {
+			res.put("LIST", employeeService.selectList(employeeSearchParam));
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
+		
 		return res;
 	}
 	
 	@GetMapping(value="/selectCountByTeam.json")
 	public Map<String, Object> selectCountByTeam(){
 		Map<String, Object> res = new HashMap<String, Object>();
-		res.put("LIST", employeeService.selectCountByTeam());
+		
+		try {
+			res.put("LIST", employeeService.selectCountByTeam());
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
+		
 		return res;
 	}
 	
 	@GetMapping(value="/selectListPaging.json")
 	public Map<String, Object> selectListPaging(@RequestParam(name="pageNum", required=true) int pageNum, @RequestParam(name="pageRow", required=true) int pageRow){
 		Map<String, Object> res = new HashMap<String, Object>();
-		res.put("LIST", employeeService.selectListPaging(pageNum, pageRow));
+		
+		try {
+			res.put("LIST", employeeService.selectListPaging(pageNum, pageRow));
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
+		
 		return res;
 	}
 	
 	@PostMapping(value="/insertBatch.json")
 	public Map<String, String> insertBatch(@RequestBody List<EmployeeDto> list){
 		Map<String, String> res = new HashMap<String, String>();
-		employeeService.insertBatch(list);
-		res.put("LIST", "SUCCESS");
+		
+		try {
+			employeeService.insertBatch(list);
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
+		
 		return res;
 	}
 }

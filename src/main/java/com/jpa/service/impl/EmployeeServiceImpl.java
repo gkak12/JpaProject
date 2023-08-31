@@ -20,22 +20,22 @@ public class EmployeeServiceImpl implements EmployeeService{
 	private EmployeeRepository employeeRepository;
 	
 	@Override
-	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) {
+	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) throws Exception {
 		return employeeRepository.selectList(employeeSearchParam);
 	}
 
 	@Override
-	public List<TeamDto> selectCountByTeam() {
+	public List<TeamDto> selectCountByTeam() throws Exception {
 		return employeeRepository.selectCountByTeam();
 	}
 
 	@Override
-	public List<Employee> selectListPaging(int pageNum, int pageRow) {
+	public List<Employee> selectListPaging(int pageNum, int pageRow) throws Exception {
 		return employeeRepository.selectListPaging(pageNum, pageRow);
 	}
 
 	@Override
-	public void insertBatch(List<EmployeeDto> list) {
+	public void insertBatch(List<EmployeeDto> list) throws Exception {
 		employeeRepository.insertBatch(list);
 	}
 }

@@ -16,7 +16,7 @@ public class TeamRepositoryImpl implements TeamRepository{
 	private final JPAQueryFactory queryFactory;
 	
 	@Override
-	public Team selectOneById(int id) {
+	public Team selectOneById(int id) throws Exception {
 		QTeam team = QTeam.team;
 		
 		Team t = queryFactory.select(team).from(team).where(team.id.eq(id)).fetchOne();

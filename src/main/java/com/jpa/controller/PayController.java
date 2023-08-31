@@ -28,19 +28,32 @@ public class PayController {
 	@GetMapping(value="/selectList.json")
 	public Map<String, Object> selectList(){
 		Map<String, Object> res = new HashMap<String, Object>();
-		res.put("LIST", payService.selectList());
+		
+		try {
+			res.put("LIST", payService.selectList());
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
+		
 		return res;
 	}
 	
 
 	@PostMapping(value="/insert.json")
 	public Map<String, String> insert(@RequestBody PayDto payDto){
-		LOGGER.debug(payDto.toString());
-		
 		Map<String, String> res = new HashMap<String, String>();
-		payService.insert(payDto);
+		LOGGER.debug(payDto.toString());
+
+		try {
+			payService.insert(payDto);
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
 		
-		res.put("MSG", "SUCCESS");
 		return res;
 	}
 }

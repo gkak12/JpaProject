@@ -18,12 +18,12 @@ public class PayServiceImpl implements PayService{
 	private PayRepository payRepository;
 
 	@Override
-	public List<Pay> selectList() {
+	public List<Pay> selectList() throws Exception {
 		return payRepository.selectList();
 	}
 
 	@Override
-	public void insert(PayDto payDto) {
+	public void insert(PayDto payDto) throws Exception {
 		payRepository.insert(payDto);
 	}
 }

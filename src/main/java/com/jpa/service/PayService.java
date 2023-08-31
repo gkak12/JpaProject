@@ -7,7 +7,7 @@ import com.jpa.dto.PayDto;
 
 public interface PayService {
 
-	public List<Pay> selectList();
+	public List<Pay> selectList() throws Exception;
 	
-	public void insert(PayDto payDto);
+	public void insert(PayDto payDto) throws Exception;
 }

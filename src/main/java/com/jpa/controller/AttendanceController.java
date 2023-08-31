@@ -21,7 +21,15 @@ public class AttendanceController {
 	@GetMapping(value="/selectList.json")
 	public Map<String, Object> selectList(){
 		Map<String, Object> res = new HashMap<String, Object>();
-		res.put("LIST", attendanceService.selectList());
+		
+		try {
+			res.put("LIST", attendanceService.selectList());
+			res.put("RESULT", "SUCCESS");
+		} catch (Exception e) {
+			res.put("RESULT", "FAIL");
+			res.put("MSG", e.toString());
+		}
+		
 		return res;
 	}
 }

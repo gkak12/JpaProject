@@ -9,11 +9,11 @@ import com.jpa.param.EmployeeSearchParam;
 
 public interface EmployeeService {
 
-	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam);
+	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) throws Exception;
 	
-	public List<TeamDto> selectCountByTeam();
+	public List<TeamDto> selectCountByTeam() throws Exception;
 	
-	public List<Employee> selectListPaging(int pageNum, int pageRow);
+	public List<Employee> selectListPaging(int pageNum, int pageRow) throws Exception;
 	
-	public void insertBatch(List<EmployeeDto> list);
+	public void insertBatch(List<EmployeeDto> list) throws Exception;
 }

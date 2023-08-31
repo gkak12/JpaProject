@@ -6,5 +6,5 @@ import com.jpa.domain.Attendance;
 
 public interface AttendanceService {
 
-	public List<Attendance> selectList();
+	public List<Attendance> selectList() throws Exception;
 }

@@ -31,7 +31,7 @@ public class PayRepositoryImpl implements PayRepository{
 	private PayStatusRepository payStatusRepository;
 	
 	@Override
-	public List<Pay> selectList() {
+	public List<Pay> selectList() throws Exception {
 		QPay pay = QPay.pay;
 		QEmployee employee = QEmployee.employee;
 		
@@ -46,7 +46,7 @@ public class PayRepositoryImpl implements PayRepository{
 	}
 
 	@Override
-	public void insert(PayDto payDto) {
+	public void insert(PayDto payDto) throws Exception {
 		PayId payId = new PayId(payDto.getEmployeeId(), payDto.getDate());
 		PayStatus payStatus = payStatusRepository.selectOne(payDto.getPayStatusId());
 		

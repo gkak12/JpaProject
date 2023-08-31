@@ -21,7 +21,7 @@ public class GradeRepositoryImpl implements GradeRepository{
 	private final EntityManager entityManager;
 
 	@Override
-	public Grade selectOneById(int id) {
+	public Grade selectOneById(int id) throws Exception {
 		QGrade grade = QGrade.grade;
 		
 		Grade g = queryFactory
@@ -34,7 +34,7 @@ public class GradeRepositoryImpl implements GradeRepository{
 	}
 	
 	@Override
-	public void insert(GradeDto gradeDto) {
+	public void insert(GradeDto gradeDto) throws Exception {
 		Grade grade = new Grade();
 		grade.setName(gradeDto.getName());
 		

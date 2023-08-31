@@ -39,7 +39,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 	private GradeRepository gradeRepository;
 	
 	@Override
-	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) {
+	public List<Employee> selectList(EmployeeSearchParam employeeSearchParam) throws Exception {
 		QEmployee employee = QEmployee.employee;
 		QTeam team = QTeam.team;
 		QGrade grade = QGrade.grade;
@@ -56,7 +56,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 	}
 
 	@Override
-	public List<TeamDto> selectCountByTeam() {
+	public List<TeamDto> selectCountByTeam() throws Exception {
 		QEmployee employee = QEmployee.employee;
 		QTeam team = QTeam.team;
 		
@@ -77,7 +77,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 	}
 	
 	@Override
-	public List<Employee> selectListPaging(int pageNum, int pageRow) {
+	public List<Employee> selectListPaging(int pageNum, int pageRow) throws Exception {
 		QEmployee employee = QEmployee.employee;
 		
 		List<Employee> list = queryFactory
@@ -91,7 +91,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository{
 	}
 
 	@Override
-	public void insertBatch(List<EmployeeDto> list) {
+	public void insertBatch(List<EmployeeDto> list) throws Exception {
 		int cnt = 0;
 		
 		for(EmployeeDto item : list) {

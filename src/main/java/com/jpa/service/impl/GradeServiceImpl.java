@@ -15,7 +15,7 @@ public class GradeServiceImpl implements GradeService{
 	private GradeRepository gradeRepository;
 	
 	@Override
-	public void insert(GradeDto gradeDto) {
+	public void insert(GradeDto gradeDto) throws Exception {
 		gradeRepository.insert(gradeDto);
 	}
 }
