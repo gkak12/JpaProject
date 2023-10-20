@@ -31,7 +31,7 @@ import com.jpa.service.EmployeeService;
 @DisplayName("EmployeeController 테스트 클래스 ")
 class EmployeeControllerTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(PayControllerTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeControllerTest.class);
 	
 	@Autowired
 	private MockMvc mockMvc;
