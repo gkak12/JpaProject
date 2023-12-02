@@ -17,12 +17,10 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+  config:
+    import: encrypt.yml
       
 logging:
   file:
     path: /home/user/logs
     name: jpa
-    
-jasypt:
-  encryptor:
-    bean: jasyptEncryptorDES

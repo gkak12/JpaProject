@@ -11,15 +11,16 @@ spring:
       maximum-pool-size: 4
   jpa:
     database: postgresql
-    properties:      hibernate:
+    properties:
+      hibernate:
         format_sql: true  
   jackson:
     serialization:
       fail-on-empty-beans: false
+  config:
+    import: encrypt.yml
       
-logging:  file:
-    path: D:\\workspace\\JpaProject\\logs    name: jpa
-    
-jasypt:
-  encryptor:
-    bean: jasyptEncryptorDES
+logging:
+  file:
+    path: D:\\workspace\\JpaProject\\logs
+    name: jpa
